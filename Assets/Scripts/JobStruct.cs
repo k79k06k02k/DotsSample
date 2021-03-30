@@ -46,3 +46,24 @@ public struct JobOtherDataParallel : IJobParallelFor
         queue.Enqueue(array[index]);
     }
 }
+
+
+public class TestData
+{
+    public int value;
+}
+
+[BurstCompile]
+public struct BurstHeap : IJob
+{
+    public void Execute()
+    {
+        DiscardMethod();
+    }
+
+    [BurstDiscard]
+    private void DiscardMethod()
+    {
+        var test = new TestData() {value = 1};
+    }
+}
